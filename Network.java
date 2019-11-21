@@ -216,21 +216,21 @@ class Network{
 	 * @param      predict  to predict or not
 	 */
 	public void forwardPropgate(boolean predict){
-		Layer current_layer = root.next;
-		while(current_layer.next != null || (predict == true)){
-			current_layer.weightSigmoidFree = current_layer.back.weight.dot(current_layer.synapse);
-			current_layer.weight = current_layer.weightSigmoidFree.sigmoid(false);	
+		Layer currentLayer = root.next;
+		while(currentLayer.next != null || (predict == true)){
+			currentLayer.weightSigmoidFree = currentLayer.back.weight.dot(currentLayer.synapse);
+			currentLayer.weight = currentLayer.weightSigmoidFree.sigmoid(false);	
 
-			if(current_layer.next == null){
+			if(currentLayer.next == null){
 				break;
 			}
-			current_layer = current_layer.next;
+			currentLayer = currentLayer.next;
 		}
 		if(!predict){
-			error = current_layer.back.weight.sub(current_layer.weight);
-			lastLayer = current_layer.back;
+			error = currentLayer.back.weight.sub(currentLayer.weight);
+			lastLayer = currentLayer.back;
 		}else{
-			lastLayer = current_layer;
+			lastLayer = currentLayer;
 		}
 	}
 
@@ -246,7 +246,6 @@ class Network{
 		
 		currentLayer = currentLayer.back;
 		
-		//System.out.println(layerLookup.get("test").synapse.abs().mean());
 		//	how big was the error in each Layer?
 		while(1 <= currentLayer.id){
 			currentLayer.delta = currentLayer.next.delta.dot(currentLayer.next.synapse.transpose()).directMultiply(currentLayer.weight.sigmoid(true));			

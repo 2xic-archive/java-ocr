@@ -1,5 +1,5 @@
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	docker run -v "/Users/2xic/shared/robot-kopi/com/":/target/ -it java_doc bash
+	docker run -v "$(pwd)":/target/ -it java_doc bash
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
 	rm -rf ./build/*
 	export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8 && javac  *.java -d ./build
@@ -15,8 +15,4 @@ elif [[ "$OSTYPE" == "linux-gnu" ]]; then
 	  	echo "run"
 	    java -jar build/Agent.jar
 	fi
-
-#	if [[ $# -eq 0 ]] ; then
-#		java -jar build/Agent.jar
-#	fi
 fi

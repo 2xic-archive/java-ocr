@@ -8,7 +8,7 @@ public class MatrixTest extends TestCase {
 
 	}
 
-	public void testAccessor(){
+	public void testBasic(){
 		Matrix x = new Matrix(new double[][] {
 			{0, 0, 1},
 			{0, 1, 1}
@@ -22,7 +22,7 @@ public class MatrixTest extends TestCase {
 		assertEquals(w.equalMatrix(new Matrix(new double[][] {
 						{0, 0, 2},
 						{0, 2, 2}
-					})), true);
+		})), true);
 	}
 
 	public void testSigmoid(){
@@ -31,9 +31,9 @@ public class MatrixTest extends TestCase {
 		});
 		double x = inverse.sigmoid(inverse.numbers[0][0]);
 		assertEquals(x == 0.7310585786300049, true);
-		double x_deriviation = inverse.sigmoidDerivative(x);
-		System.out.println(x_deriviation);
-		assertEquals(x_deriviation == 0.19661193324148185, true);
+		double xDeriviation = inverse.sigmoidDerivative(x);
+		System.out.println(xDeriviation);
+		assertEquals(xDeriviation == 0.19661193324148185, true);
 	}
 
 	public void testDot(){

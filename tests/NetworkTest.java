@@ -84,7 +84,7 @@ public class NetworkTest extends TestCase {
 	 */
 	public void testSmall(){
 		DataHandler dataset = new DataHandler(256);
-		dataset.makeDataSet("/target/training/");
+		dataset.makeDataSet("/target/dataset/training/");
 		x = new Matrix(dataset.getX());
 		y = new Matrix(dataset.getY());
 
@@ -109,29 +109,29 @@ public class NetworkTest extends TestCase {
 	 */
 	public void testForward(){
 		model.fit(x, y, 1);
-		Matrix erro_matrix = new Matrix(new double[][]{
+		Matrix errorMatrix = new Matrix(new double[][]{
 			{ 0.37713134},
 			{-0.63908421},
 			{-0.61434337},
 			{ 0.36933085}
 		});
 
-		Matrix layer_one_weigths = new Matrix(new double[][]{
+		Matrix layerOneWeigths = new Matrix(new double[][]{
 			{0.71653238,0.44198326,0.64186088,0.51444344},
 			{0.68452271,0.51466361,0.61268782,0.69874648},
 			{0.73593617,0.54915615,0.68761159,0.53682227},
 			{0.70521618,0.61988261,0.66019229,0.71729885}
 		});
-		assertEquals((model.orginalRoot.next.weight.round(8)).equalMatrix(layer_one_weigths), true);
+		assertEquals((model.orginalRoot.next.weight.round(8)).equalMatrix(layerOneWeigths), true);
 
-		Matrix layer_two_weigths = new Matrix(new double[][]{
+		Matrix layerTwoWeigths = new Matrix(new double[][]{
 			{0.37713134},
 			{0.36091579},
 			{0.38565663},
 			{0.36933085}
 		});
-		assertEquals((model.orginalRoot.next.next.weight.round(8)).equalMatrix(layer_two_weigths), true);		
-		assertEquals(erro_matrix.equalMatrix(model.error.round(8)), true);
+		assertEquals((model.orginalRoot.next.next.weight.round(8)).equalMatrix(layerTwoWeigths), true);		
+		assertEquals(errorMatrix.equalMatrix(model.error.round(8)), true);
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class NetworkTest extends TestCase {
 	 */
 	public void testBackward(){
 		model.fit(x, y, 1);
-		Matrix erro_matrix = new Matrix(new double[][]{
+		Matrix errorMatrix = new Matrix(new double[][]{
 			{ 0.37713134},
 			{-0.63908421},
 			{-0.61434337},

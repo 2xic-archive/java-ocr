@@ -31,4 +31,21 @@ public class AgentTest extends TestCase {
 			}), false) 
 		), 3);
 	}
+
+	public void testPreTrainedModelValidation(){
+		Agent agent = new Agent();
+
+		DataHandler validation = new DataHandler(256);
+		DataHandler.makeDataSet("/target/dataset/validation/");
+		double score = 0;
+		Matrix x = new Matrix(validation.getX());
+		Matrix y = new Matrix(validation.getY());
+
+		for(int i = 0; i < x.getRows(); i++){
+			if(agent.predictNumber((new double[][]{x.numbers[i]}), false) == (agent.getMaxIndex(y.numbers[i]))){
+				score ++;
+			}
+		}
+		assertEquals(0.8 <= (score/y.getRows()), true);
+	}
 }

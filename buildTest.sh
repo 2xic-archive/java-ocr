@@ -19,4 +19,3 @@ cd build
 java -cp ".:/usr/share/java/junit.jar:./build/:./build/com/:./com/:./tests/" junit.textui.TestRunner com.AgentTest
 java -cp ".:/usr/share/java/junit.jar:./build/:./build/com/:./com/:./tests/" junit.textui.TestRunner com.MatrixTest
 java -cp ".:/usr/share/java/junit.jar:./build/:./build/com/:./com/:./tests/" junit.textui.TestRunner com.NetworkTest
-java -cp ".:/usr/share/java/junit.jar:./build/:./build/com/:./com/:./tests/" junit.textui.TestRunner com.DataHandlerTest

@@ -117,20 +117,25 @@ public class DataHandler{
 	 */
 	public static void makeDataSet(String folderPath){
 		final File folder = new File(folderPath);
-		List<String> result = new ArrayList<>();
-
-		searchFiles(".*\\.jpg", folder, result);
-
-		X =  new double[result.size()][7];
-		y =  new double[result.size()][10];
-
-		int index = 0;
-		for (String s : result) {
-			int expectedNumber = s.replace(folderPath, "").charAt(0) - '0';
 			
-			X[index] = loadImage(new File(s));
-			y[index][expectedNumber] = 1;
-			index++;
+		if(folder.exists()) {
+			List<String> result = new ArrayList<>();
+
+			searchFiles(".*\\.jpg", folder, result);
+
+			X =  new double[result.size()][7];
+			y =  new double[result.size()][10];
+
+			int index = 0;
+			for (String s : result) {
+				int expectedNumber = s.replace(folderPath, "").charAt(0) - '0';
+				
+				X[index] = loadImage(new File(s));
+				y[index][expectedNumber] = 1;
+				index++;
+			}	
+		}else{
+			System.out.println("folder does not exsist!!!");
 		}
 	}
 
