@@ -1,2 +1,0 @@
-Main-Class: com.Agent
-Class-Path: ./jars/slf4j-simple-1.7.25.jar
